@@ -8,24 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ulise\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\joasa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\floresGadea\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+      "projectUniqueName": "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
       "projectName": "CentroEventos.Aplicacion",
-      "projectPath": "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\floresGadea\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
-      "packagesPath": "C:\\Users\\ulise\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\floresGadea\\CentroEventos.Aplicacion\\obj\\",
+      "projectPath": "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+      "packagesPath": "C:\\Users\\joasa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Aplicacion\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ulise\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
+        "C:\\Users\\joasa\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
