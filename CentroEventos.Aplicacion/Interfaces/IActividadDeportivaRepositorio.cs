@@ -2,7 +2,8 @@
 
 public interface IActividadDeportivaRepositorio
 {
-    public List<ActividadDeportiva> getAll();
+    public List<ActividadDeportiva> GetAll();
 
-    //public ActividadDeportiva getById(int id);
+    public ActividadDeportiva GetById(int id);
+
 }

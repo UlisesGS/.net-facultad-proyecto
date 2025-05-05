@@ -11,7 +11,7 @@ public class ValidadorActividadDeportiva
         }
 
         if (actividad.DiasDisponibles == null || !actividad.DiasDisponibles.All(fecha => fecha >= DateTime.Today)){
-            throw new ValidacionException("ERROR - Todas las fechas deben ser iguales o posteriores a la fecha actual.");
+            throw new FechaInvalidaException("ERROR - Todas las fechas deben ser iguales o posteriores a la fecha actual.");
         }
 
         if (actividad.CupoMaximo <= 0){
