@@ -6,7 +6,7 @@ public class ActividadDeportiva
 
     public string Nombre { get; set;} = null!;
 
-    public List<string> DiasDisponibles { get; set;} = new();
+    public List<DateTime> DiasDisponibles { get; set;} = new();
 
     public int CupoMaximo { get; set;}
 

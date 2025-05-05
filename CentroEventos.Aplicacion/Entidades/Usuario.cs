@@ -8,5 +8,5 @@ public class Usuario
 
     public string Nombre {get; set;} = null!;
 
-    public // List<EnumPermisos>
+    //public List<EnumPermisos>
 }
