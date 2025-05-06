@@ -24,14 +24,14 @@ public class ValidadorReserva
             throw new ValidacionException ("ERROR - La actividad no es valida.");
         }
 
-        var docente = _repoDocente.GetById(reserva.PersonaId);
+        /* var docente = _repoDocente.GetById(reserva.PersonaId);
 
         if (docente == null){
             throw new ValidacionException ("ERROR - El responsable no es valido.");
-        }
+        } */
 
-        if(_repoReserva.VerifyReserva(reserva.PersonaId, reserva.ActividadId)){ // NOS QUEDAMOS POR ACAAAA!!
-
+        if(_repoReserva.VerifyReserva(reserva.PersonaId, reserva.ActividadId)){
+            throw new ValidacionException("ERROR - Esta persona ya tiene una reserva");
         }
 
         List<DateTime> dias = actividad.DiasDisponibles;

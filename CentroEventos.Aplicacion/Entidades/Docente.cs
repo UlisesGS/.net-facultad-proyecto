@@ -1,6 +1,6 @@
 ﻿namespace CentroEventos.Aplicacion;
 
-public class Docente
+public class Docente : Persona
 {
     public string Matricula { get; set;} = null!;
 
