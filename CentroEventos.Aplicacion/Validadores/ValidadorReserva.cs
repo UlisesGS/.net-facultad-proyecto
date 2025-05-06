@@ -31,7 +31,7 @@ public class ValidadorReserva
         } */
 
         if(_repoReserva.VerifyReserva(reserva.PersonaId, reserva.ActividadId)){
-            throw new ValidacionException("ERROR - Esta persona ya tiene una reserva");
+            throw new ValidacionException("ERROR - Esta persona ya tiene una reserva.");
         }
 
         List<DateTime> dias = actividad.DiasDisponibles;

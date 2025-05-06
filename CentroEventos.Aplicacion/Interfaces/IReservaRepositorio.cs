@@ -11,6 +11,8 @@ public interface IReservaRepositorio
     public void Eliminar(int id);
 
 
+    public Reserva GetById(int id);
+
     public Boolean VerifyReserva(int idEstudiante, int idActividad);  //no se si manejar la logica en el repo o en el validador
 
 }
