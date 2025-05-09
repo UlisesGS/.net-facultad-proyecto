@@ -6,9 +6,9 @@ public class Reserva
 
     public int PersonaId { get; set;}
 
-    public int ActividadId { get; set;}
+    public int EventoDeportivoId { get; set;}
 
-    public DateTime FechaReserva { get; set;}
+    public DateTime FechaAltaReserva { get; set;}
 
     public EnumEstadoAsistencia EstadoAsistencia { get; set;} = EnumEstadoAsistencia.pendiente;
 }

@@ -1,18 +1,9 @@
-﻿using CentroEventos.Aplicacion.Entidades;
+﻿using CentroEventos.Aplicacion;
 
 namespace CentroEventos.Aplicacion;
 
 public interface IReservaRepositorio
 {
-    public void Guardar(Reserva reserva);
-
-    public void Modificar(Reserva reserva);
-
-    public void Eliminar(int id);
-
-
-    public Reserva GetById(int id);
-
-    public Boolean VerifyReserva(int idEstudiante, int idActividad);  //no se si manejar la logica en el repo o en el validador
+    public Boolean ExistsDuplicatePersona(int idPersona, int idEventoDeportivo);
 
 }

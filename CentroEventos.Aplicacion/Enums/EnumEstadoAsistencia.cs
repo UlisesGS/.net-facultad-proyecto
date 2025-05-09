@@ -3,7 +3,6 @@
 public enum EnumEstadoAsistencia
 {
     pendiente,
-    asistio,
-    ausente,
-    cancelado
+    presente,
+    ausente
 }
