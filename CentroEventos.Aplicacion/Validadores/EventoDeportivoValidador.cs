@@ -12,7 +12,7 @@ public class EventoDeportivoValidador
     }
 
 
-    public void Validar(EventoDeportivo evento) //PDF A QUE SE REFIERE CON DESCRIPCION
+    public void Validar(EventoDeportivo evento)
     {
         if (string.IsNullOrWhiteSpace(evento.Nombre)){
             throw new ValidacionException("ERROR - Nombre obligatorio.");

@@ -32,7 +32,7 @@ public class ReservaValidador
             throw new DuplicadoException("ERROR - La Reserva ya esta registrada.");
         }
 
-        if (_repoEventoDeportivo.VerifyCupoMaximo(reserva.EventoDeportivoId)){ // por que dice llamas a IRepositorioReserva
+        if (_repoReserva.QuantityCupo(reserva.EventoDeportivoId) >= _repoEventoDeportivo.CupoMaximo(reserva.EventoDeportivoId)){ // por que dice llamas a IRepositorioReserva
             throw new CupoExcedidoException("ERROR - No hay Cupo disponible.");
         }
     }
