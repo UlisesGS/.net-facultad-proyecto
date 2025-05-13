@@ -1,14 +1,15 @@
-﻿namespace CentroEventos.Aplicacion;
-
-public enum EnumPermiso
+﻿namespace CentroEventos.Aplicacion
 {
-    EventoAlta,
-    EventoModificacion,
-    EventoBaja,
-    ReservaAlta,
-    ReservaModificacion,
-    ReservaBaja,
-    UsuarioAlta,
-    UsuarioModificacion,
-    UsuarioBaja
+    public enum EnumPermiso
+    {
+        EventoAlta,
+        EventoModificacion,
+        EventoBaja,
+        ReservaAlta,
+        ReservaModificacion,
+        ReservaBaja,
+        UsuarioAlta,
+        UsuarioModificacion,
+        UsuarioBaja
+    }
 }

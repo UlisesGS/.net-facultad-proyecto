@@ -1,46 +1,47 @@
 ﻿using CentroEventos.Aplicacion.Excepciones;
 
-namespace CentroEventos.Aplicacion;
-
-public class PersonaValidador
+namespace CentroEventos.Aplicacion
 {
-
-    private readonly IPersonaRepositorio _repoPersona;
-
-    public PersonaValidador(IPersonaRepositorio repositorioPersona)
+    public class PersonaValidador
     {
-        _repoPersona = repositorioPersona;
-    }
 
-    public void Validar(Persona persona) {
+        private readonly IPersonaRepositorio _repoPersona;
 
-        if(string.IsNullOrWhiteSpace(persona.Nombre)){
-            throw new ValidacionException("ERROR - Nombre obligatorio.");
+        public PersonaValidador(IPersonaRepositorio repositorioPersona)
+        {
+            _repoPersona = repositorioPersona;
         }
 
-        if(string.IsNullOrWhiteSpace(persona.Apellido)){
-            throw new ValidacionException("ERROR - Apellido Obligatorio.");
-        }
+        public void Validar(Persona persona) {
 
-        if(persona.DNI == null){
-            throw new ValidacionException("ERROR - DNI obligatorio.");
-        }
+            if(string.IsNullOrWhiteSpace(persona.Nombre)){
+                throw new ValidacionException("ERROR - Nombre obligatorio.");
+            }
 
-        if(persona.DNI.Value.ToString().Length != 8){ //c# no detecta el if anterior
-            throw new ValidacionException("ERROR - La longitud tiene que ser de 8.");
-        }
+            if(string.IsNullOrWhiteSpace(persona.Apellido)){
+                throw new ValidacionException("ERROR - Apellido Obligatorio.");
+            }
 
-        if(_repoPersona.ExistsByDNI(persona.DNI.Value)){
-            throw new DuplicadoException("ERROR - DNI ya registrado.");
-        }
+            if(persona.DNI == null){
+                throw new ValidacionException("ERROR - DNI obligatorio.");
+            }
 
-        if(string.IsNullOrWhiteSpace(persona.Email)){
-            throw new ValidacionException("ERROR - Email obligatorio.");
-        }
+            if(persona.DNI.Value.ToString().Length != 8){ //c# no detecta el if anterior
+                throw new ValidacionException("ERROR - La longitud tiene que ser de 8.");
+            }
 
-        if(_repoPersona.ExistsByEmail(persona.Email)){
-            throw new DuplicadoException("ERROR - Email ya registrado.");
+            if(_repoPersona.ExistsByDNI(persona.DNI.Value)){
+                throw new DuplicadoException("ERROR - DNI ya registrado.");
+            }
+
+            if(string.IsNullOrWhiteSpace(persona.Email)){
+                throw new ValidacionException("ERROR - Email obligatorio.");
+            }
+
+            if(_repoPersona.ExistsByEmail(persona.Email)){
+                throw new DuplicadoException("ERROR - Email ya registrado.");
+            }
         }
-    }
     
+    }
 }

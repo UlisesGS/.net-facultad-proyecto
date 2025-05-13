@@ -1,6 +1,7 @@
-﻿namespace CentroEventos.Aplicacion;
-
-public class FalloAutorizacionException : Exception
+﻿namespace CentroEventos.Aplicacion
 {
-    public FalloAutorizacionException(string mensaje) : base(mensaje) { }
+    public class FalloAutorizacionException : Exception
+    {
+        public FalloAutorizacionException(string mensaje) : base(mensaje) { }
+    }
 }

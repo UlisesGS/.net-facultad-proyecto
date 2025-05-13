@@ -1,6 +1,7 @@
-﻿namespace CentroEventos.Aplicacion.Excepciones;
-
-public class ValidacionException : Exception
+﻿namespace CentroEventos.Aplicacion.Excepciones
 {
-    public ValidacionException(string mensaje) : base(mensaje) { }
+    public class ValidacionException : Exception
+    {
+        public ValidacionException(string mensaje) : base(mensaje) { }
+    }
 }

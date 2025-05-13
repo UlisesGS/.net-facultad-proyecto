@@ -1,9 +1,10 @@
-﻿namespace CentroEventos.Aplicacion;
-
-public class ServicioDeAutorizacionProvisorio : IServicioAutorizacion
+﻿namespace CentroEventos.Aplicacion
 {
-    public bool PoseeElPermiso(int IdUsuario, EnumPermiso permiso){
+    public class ServicioDeAutorizacionProvisorio : IServicioAutorizacion
+    {
+        public bool PoseeElPermiso(int IdUsuario, EnumPermiso permiso){
 
-        return IdUsuario==1;
+            return IdUsuario==1;
+        }
     }
 }

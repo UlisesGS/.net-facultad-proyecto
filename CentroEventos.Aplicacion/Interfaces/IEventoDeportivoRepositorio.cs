@@ -1,9 +1,19 @@
-﻿namespace CentroEventos.Aplicacion;
-
-public interface IEventoDeportivoRepositorio
+﻿namespace CentroEventos.Aplicacion
 {
-    public Boolean ExistsById(int idEventoDeportivo);
+    public interface IEventoDeportivoRepositorio
+    {
+        public Boolean ExistsById(int idEventoDeportivo);
 
-    public int CupoMaximo(int idEventoDeportivo);
-    
+        public Boolean ExistsByIdResponsable(int idPersona);
+
+        public int CupoMaximo(int idEventoDeportivo);
+
+        public void Agregar(EventoDeportivo evento);
+
+        public void Eliminar(int idEvento);
+
+        public List<EventoDeportivo> Listar();
+
+        public EventoDeportivo BuscarPorId(int id);
+    }
 }

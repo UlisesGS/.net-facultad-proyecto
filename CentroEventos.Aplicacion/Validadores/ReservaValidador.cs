@@ -1,39 +1,40 @@
 ﻿using CentroEventos.Aplicacion.Excepciones;
 
-namespace CentroEventos.Aplicacion;
-
-public class ReservaValidador
+namespace CentroEventos.Aplicacion
 {
-    private readonly IPersonaRepositorio _repoPersona;
-
-    private readonly IEventoDeportivoRepositorio _repoEventoDeportivo;
-
-    private readonly IReservaRepositorio _repoReserva;
-
-    public ReservaValidador(IPersonaRepositorio repositorioPersona, IEventoDeportivoRepositorio repositorioEventoDeportivo, IReservaRepositorio repositorioReserva)
+    public class ReservaValidador
     {
-        _repoPersona = repositorioPersona;
-        _repoEventoDeportivo = repositorioEventoDeportivo;
-        _repoReserva = repositorioReserva;
-    }
+        private readonly IPersonaRepositorio _repoPersona;
 
-    public void Validar(Reserva reserva)
-    {
+        private readonly IEventoDeportivoRepositorio _repoEventoDeportivo;
 
-        if (_repoPersona.ExistsById(reserva.PersonaId)){
-            throw new EntidadNotFoundException("ERROR - La Persona no es valida.");
+        private readonly IReservaRepositorio _repoReserva;
+
+        public ReservaValidador(IPersonaRepositorio repositorioPersona, IEventoDeportivoRepositorio repositorioEventoDeportivo, IReservaRepositorio repositorioReserva)
+        {
+            _repoPersona = repositorioPersona;
+            _repoEventoDeportivo = repositorioEventoDeportivo;
+            _repoReserva = repositorioReserva;
         }
 
-        if (_repoEventoDeportivo.ExistsById(reserva.EventoDeportivoId)){
-            throw new EntidadNotFoundException("ERROR - El Evento Deportivo no es valido.");
-        }
+        public void Validar(Reserva reserva)
+        {
 
-        if (_repoReserva.ExistsDuplicatePersona(reserva.PersonaId,reserva.EventoDeportivoId)){
-            throw new DuplicadoException("ERROR - La Reserva ya esta registrada.");
-        }
+            if (_repoPersona.ExistsById(reserva.PersonaId)){
+                throw new EntidadNotFoundException("ERROR - La Persona no es valida.");
+            }
 
-        if (_repoReserva.QuantityCupo(reserva.EventoDeportivoId) >= _repoEventoDeportivo.CupoMaximo(reserva.EventoDeportivoId)){ // por que dice llamas a IRepositorioReserva
-            throw new CupoExcedidoException("ERROR - No hay Cupo disponible.");
+            if (_repoEventoDeportivo.ExistsById(reserva.EventoDeportivoId)){
+                throw new EntidadNotFoundException("ERROR - El Evento Deportivo no es valido.");
+            }
+
+            if (_repoReserva.ExistsDuplicatePersona(reserva.PersonaId,reserva.EventoDeportivoId)){
+                throw new DuplicadoException("ERROR - La Reserva ya esta registrada.");
+            }
+
+            if (_repoReserva.QuantityCupo(reserva.EventoDeportivoId) >= _repoEventoDeportivo.CupoMaximo(reserva.EventoDeportivoId)){
+                throw new CupoExcedidoException("ERROR - No hay Cupo disponible.");
+            }
         }
     }
 }

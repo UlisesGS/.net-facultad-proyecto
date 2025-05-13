@@ -1,6 +1,7 @@
-﻿namespace CentroEventos.Aplicacion;
-
-public class Class1
+﻿namespace CentroEventos.Aplicacion
 {
+    public class Class1
+    {
 
+    }
 }
