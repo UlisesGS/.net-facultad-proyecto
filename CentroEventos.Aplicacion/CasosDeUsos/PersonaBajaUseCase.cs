@@ -1,6 +1,6 @@
 ﻿namespace CentroEventos.Aplicacion;
 
-public class ListarReservasActivasUseCase
+public class PersonaBajaUseCase 
 {
 
 }
