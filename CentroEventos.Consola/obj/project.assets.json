@@ -46,19 +46,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\joasa\\.nuget\\packages\\": {}
+    "C:\\Users\\ulise\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
+      "projectUniqueName": "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\.net-facultad-proyecto\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
       "projectName": "CentroEventos.Consola",
-      "projectPath": "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
-      "packagesPath": "C:\\Users\\joasa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Consola\\obj\\",
+      "projectPath": "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\.net-facultad-proyecto\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
+      "packagesPath": "C:\\Users\\ulise\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\.net-facultad-proyecto\\CentroEventos.Consola\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\joasa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ulise\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -70,11 +75,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
-              "projectPath": "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
+            "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\.net-facultad-proyecto\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+              "projectPath": "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\.net-facultad-proyecto\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
             },
-            "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
-              "projectPath": "C:\\Users\\joasa\\OneDrive\\Escritorio\\SEGUNDO AÑO\\.NET\\FloresGadea\\.net-facultad-proyecto\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj"
+            "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\.net-facultad-proyecto\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
+              "projectPath": "C:\\Users\\ulise\\OneDrive\\Escritorio\\Facu\\.net-facultad-proyecto\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj"
             }
           }
         }
@@ -109,7 +114,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.409/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.408/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

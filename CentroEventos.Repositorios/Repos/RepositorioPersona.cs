@@ -1,6 +1,6 @@
 ﻿namespace CentroEventos.Repositorios;
 
-public class Class1
+public class RepositorioPersona
 {
 
 }
