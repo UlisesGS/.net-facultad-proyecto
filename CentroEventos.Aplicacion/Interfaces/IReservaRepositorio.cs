@@ -18,6 +18,7 @@ namespace CentroEventos.Aplicacion
 
         public List<Reserva> Listar();
 
+        public List<Reserva> ListarPorEvento(int idEvento);
         public void Modificar(Reserva reserva);
     }
 }

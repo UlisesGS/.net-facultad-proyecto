@@ -32,7 +32,7 @@ namespace CentroEventos.Aplicacion
                 throw new DuplicadoException("ERROR - La Reserva ya esta registrada.");
             }
 
-            if (_repoReserva.QuantityCupo(reserva.EventoDeportivoId) >= _repoEventoDeportivo.CupoMaximo(reserva.EventoDeportivoId)){
+            if (_repoReserva.QuantityCupo(reserva.EventoDeportivoId) == _repoEventoDeportivo.CupoMaximo(reserva.EventoDeportivoId)){
                 throw new CupoExcedidoException("ERROR - No hay Cupo disponible.");
             }
         }

@@ -15,5 +15,7 @@
         public List<EventoDeportivo> Listar();
 
         public EventoDeportivo BuscarPorId(int id);
+
+        public List<EventoDeportivo> ListarFechaFutura();
     }
 }
