@@ -8,6 +8,8 @@ namespace CentroEventos.Aplicacion
 
         public int QuantityCupo(int idEventoDeportivo); // lo contamos aca, porque no hay registro de como se va llenanado
 
+        public Boolean ExistsById(int id);
+
         public Boolean ExistsByIdPersona(int idPersona);
 
         public Boolean ExistsByIdEvento(int idEvento);

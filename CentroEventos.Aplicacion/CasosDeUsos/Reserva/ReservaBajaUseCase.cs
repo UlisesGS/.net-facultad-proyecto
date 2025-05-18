@@ -10,6 +10,10 @@
             if(!_servicioAutorizacion.PoseeElPermiso(idUsuario, EnumPermiso.ReservaBaja)){
                 throw new FalloAutorizacionException("ERROR - No estas autorizado.");
             }
+
+            if (!_repositorioReserva.ExistsById(idReserva)) {
+                throw new EntidadNotFoundException("ERROR - La reserva no es valida.");
+            }
         
             _repositorioReserva.Eliminar(idReserva);
         

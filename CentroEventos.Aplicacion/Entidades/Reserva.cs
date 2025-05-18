@@ -1,15 +1,15 @@
 ﻿namespace CentroEventos.Aplicacion
 {
-    public class Reserva
+    public class Reserva(int id, int personaId, int eventoDeportivoId, DateTime fechaAltaReserva, EnumEstadoAsistencia estadoAsistencia)
     {
-        public int Id { get; set;}
+        public int Id { get; set; } = id;
 
-        public int PersonaId { get; set;}
+        public int PersonaId { get; set; } = personaId;
 
-        public int EventoDeportivoId { get; set;}
+        public int EventoDeportivoId { get; set; } = eventoDeportivoId;
 
-        public DateTime FechaAltaReserva { get; set;}
+        public DateTime FechaAltaReserva { get; set; } = fechaAltaReserva;
 
-        public EnumEstadoAsistencia EstadoAsistencia { get; set;} = EnumEstadoAsistencia.pendiente;
+        public EnumEstadoAsistencia EstadoAsistencia { get; set;} = estadoAsistencia;
     }
 }
