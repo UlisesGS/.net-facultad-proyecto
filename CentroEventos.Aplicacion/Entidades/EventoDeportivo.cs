@@ -1,4 +1,4 @@
-﻿namespace CentroEventos.Aplicacion
+﻿namespace CentroEventos.Aplicacion.Entidades
 {
     public class EventoDeportivo(int id, int respondableId, int cupoMaximo, DateTime fechaHoraInicio, double duracionHoras, string nombre, string descripcion)
     {

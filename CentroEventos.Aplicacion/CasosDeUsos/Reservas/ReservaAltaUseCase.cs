@@ -1,4 +1,10 @@
-﻿namespace CentroEventos.Aplicacion
+﻿using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Enums;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.validadores;
+
+namespace CentroEventos.Aplicacion.CasosDeUsos.Reservas
 {
     public class  ReservaAltaUseCase(IReservaRepositorio repoReserva, IServicioAutorizacion servicioAutorizacion,ReservaValidador validador){
             private readonly IReservaRepositorio _repositorioReserva = repoReserva;

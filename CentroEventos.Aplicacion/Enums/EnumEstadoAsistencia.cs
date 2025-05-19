@@ -1,4 +1,4 @@
-﻿namespace CentroEventos.Aplicacion
+﻿namespace CentroEventos.Aplicacion.Enums
 {
     public enum EnumEstadoAsistencia
     {

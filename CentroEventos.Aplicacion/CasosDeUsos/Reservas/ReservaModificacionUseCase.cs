@@ -1,6 +1,9 @@
-﻿using CentroEventos.Aplicacion.Excepciones;
+﻿using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Enums;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
 
-namespace CentroEventos.Aplicacion
+namespace CentroEventos.Aplicacion.CasosDeUsos.Reservas
 {
     public class ReservaModificacionUseCase(IReservaRepositorio repoReserva, IServicioAutorizacion servicioAutorizacion, IPersonaRepositorio repoPersona, IEventoDeportivoRepositorio repoEvento){
             private readonly IReservaRepositorio _repositorioReserva = repoReserva;

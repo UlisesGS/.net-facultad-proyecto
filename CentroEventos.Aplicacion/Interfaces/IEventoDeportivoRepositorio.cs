@@ -1,8 +1,12 @@
-﻿namespace CentroEventos.Aplicacion
+﻿using CentroEventos.Aplicacion.Entidades;
+
+namespace CentroEventos.Aplicacion.Interfaces
 {
     public interface IEventoDeportivoRepositorio
     {
         public Boolean ExistsById(int id);
+
+        public Boolean ExistsByIdResponsable(int idPersona);
 
         public int CupoMaximo(int id);
 

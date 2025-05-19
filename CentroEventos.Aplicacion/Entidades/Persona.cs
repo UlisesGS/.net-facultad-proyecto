@@ -1,6 +1,5 @@
-﻿using System.Data.Common;
-
-namespace CentroEventos.Aplicacion
+﻿
+namespace CentroEventos.Aplicacion.Entidades
 {
     public class Persona(int id, int dni, string nombre, string apellido, string email, string telefono)
     {

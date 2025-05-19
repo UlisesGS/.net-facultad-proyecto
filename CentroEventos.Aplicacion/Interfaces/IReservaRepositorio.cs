@@ -1,6 +1,7 @@
-﻿using CentroEventos.Aplicacion;
+﻿
+using CentroEventos.Aplicacion.Entidades;
 
-namespace CentroEventos.Aplicacion
+namespace CentroEventos.Aplicacion.Interfaces
 {
     public interface IReservaRepositorio
     {

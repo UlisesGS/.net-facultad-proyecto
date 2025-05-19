@@ -1,4 +1,6 @@
-﻿namespace CentroEventos.Aplicacion
+﻿using CentroEventos.Aplicacion.Enums;
+
+namespace CentroEventos.Aplicacion.Entidades
 {
     public class Reserva(int id, int personaId, int eventoDeportivoId, DateTime fechaAltaReserva, EnumEstadoAsistencia estadoAsistencia)
     {

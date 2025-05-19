@@ -1,13 +1,13 @@
-﻿namespace CentroEventos.Repositorios;
+﻿namespace CentroEventos.Repositorios.repos;
 
 using System.Collections.Generic;
-using CentroEventos.Aplicacion;
-using DotNetEnv;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Interfaces;
 
 public class RepositorioPersona : IPersonaRepositorio
 {
-    private readonly string archivoDatos = Env.GetString("ARCHIVO_DATOS_PERSONA");
-    private readonly string archivoUltimoId = Env.GetString("ARCHIVO_ULTIMO_ID_PERSONA");
+    private readonly string archivoDatos = "C:/Users/ulise/OneDrive/Escritorio/Facu/.net-facultad-proyecto/CentroEventos.Repositorios/Data/persona/persona.txt";
+    private readonly string archivoUltimoId = "C:/Users/ulise/OneDrive/Escritorio/Facu/.net-facultad-proyecto/CentroEventos.Repositorios/Data/persona/persona_ultimoId.txt";
 
     public int AsignarId()
     {

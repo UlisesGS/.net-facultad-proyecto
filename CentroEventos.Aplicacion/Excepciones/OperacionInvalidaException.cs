@@ -1,4 +1,4 @@
-﻿namespace CentroEventos.Aplicacion
+﻿namespace CentroEventos.Aplicacion.Excepciones
 {
     public class OperacionInvalidaException : Exception
     {

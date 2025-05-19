@@ -1,4 +1,8 @@
-﻿namespace CentroEventos.Aplicacion
+﻿using CentroEventos.Aplicacion.Enums;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
+
+namespace CentroEventos.Aplicacion.CasosDeUsos.Reservas
 {
     public class ReservaBajaUseCase(IReservaRepositorio repoReserva, IServicioAutorizacion servicioAutorizacion){
             private readonly IReservaRepositorio _repositorioReserva = repoReserva;

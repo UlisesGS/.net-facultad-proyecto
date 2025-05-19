@@ -1,13 +1,15 @@
-﻿using System.Reflection.Metadata;
-using CentroEventos.Aplicacion;
-using DotNetEnv;
+﻿
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Enums;
+using CentroEventos.Aplicacion.Interfaces;
 
-namespace CentroEventos.Repositorios
+
+namespace CentroEventos.Repositorios.repos
 {
     public class RepositorioReserva : IReservaRepositorio
     {
-        private readonly string archivoDatos = Env.GetString("ARCHIVO_DATOS_RESERVA");
-        private readonly string archivoUltimoId = Env.GetString("ARCHIVO_ULTIMO_ID_RESERVA");
+        private readonly string archivoDatos = "C:/Users/ulise/OneDrive/Escritorio/Facu/.net-facultad-proyecto/CentroEventos.Repositorios/Data/reserva/reserva.txt";
+        private readonly string archivoUltimoId = "C:/Users/ulise/OneDrive/Escritorio/Facu/.net-facultad-proyecto/CentroEventos.Repositorios/Data/reserva/reserva_ultimoId.txt";
 
         public int AsignarId()
         {

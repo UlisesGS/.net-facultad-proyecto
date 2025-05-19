@@ -1,4 +1,10 @@
-﻿namespace CentroEventos.Aplicacion
+﻿using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Enums;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.validadores;
+
+namespace CentroEventos.Aplicacion.CasosDeUsos.Personas
 {
     public class PersonaAltaUseCase(IPersonaRepositorio repoPersona, IServicioAutorizacion servicioAutorizacion,PersonaValidador validador){
             private readonly IPersonaRepositorio _repositorioPersona = repoPersona;

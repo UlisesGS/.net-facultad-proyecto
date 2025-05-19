@@ -1,6 +1,8 @@
-﻿using CentroEventos.Aplicacion.Excepciones;
+﻿using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
 
-namespace CentroEventos.Aplicacion
+namespace CentroEventos.Aplicacion.validadores
 {
     public class ReservaValidador
     {

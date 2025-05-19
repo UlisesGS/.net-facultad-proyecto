@@ -1,6 +1,9 @@
-﻿using CentroEventos.Aplicacion.Excepciones;
+﻿using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
 
-namespace CentroEventos.Aplicacion{
+namespace CentroEventos.Aplicacion.CasosDeUsos
+{
 
     public class ListarEventosConCupoDisponibleUseCase(IReservaRepositorio repoReserva, IEventoDeportivoRepositorio repoEvento){
 
@@ -19,7 +22,8 @@ namespace CentroEventos.Aplicacion{
 
             foreach(EventoDeportivo evento in listaEventoDeportivo){
 
-                if (_repositorioReserva.QuantityCupo(evento.Id) < _repositorioEvento.CupoMaximo(evento.Id)){
+                if (_repositorioReserva.QuantityCupo(evento.Id) < _repositorioEvento.CupoMaximo(evento.Id))
+                {
                     listaFinal.Add(evento);
                 }
             }

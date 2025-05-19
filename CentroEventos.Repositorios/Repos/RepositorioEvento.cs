@@ -1,13 +1,13 @@
-﻿namespace CentroEventos.Repositorios;
+﻿namespace CentroEventos.Repositorios.repos;
 
 using System.Collections.Generic;
-using CentroEventos.Aplicacion;
-using DotNetEnv;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Interfaces;
 
 public class RepositorioEvento : IEventoDeportivoRepositorio
 {
-    private readonly string archivoDatos = Env.GetString("ARCHIVO_DATOS_EVENTO");
-    private readonly string archivoUltimoId = Env.GetString("ARCHIVO_ULTIMO_ID_EVENTO");
+    private readonly string archivoDatos = "C:/Users/ulise/OneDriveE/scritorio/Facu/.net-facultad-proyecto/CentroEventos.Repositorios/Data/evento/evento.txt";
+    private readonly string archivoUltimoId = "C:/Users/ulise/OneDrive/Escritorio/Facu/.net-facultad-proyecto/CentroEventos.Repositorios/Data/evento/evento_ultimoId.txt";
 
     public int AsignarId()
     {
@@ -47,7 +47,7 @@ public class RepositorioEvento : IEventoDeportivoRepositorio
 
     public EventoDeportivo? BuscarPorId(int id)
     {
-        using var leer = new StreamReader(archivoDatos!);
+        using var leer = new StreamReader(archivoDatos);
         string? linea;
         while ((linea = leer.ReadLine()) != null)
         {
@@ -60,15 +60,20 @@ public class RepositorioEvento : IEventoDeportivoRepositorio
 
     public int CupoMaximo(int id)
     {
-        using var leer = new StreamReader(archivoDatos!);
+        using var leer = new StreamReader(archivoDatos);
         string? linea;
+        int cupoMaximo=0;
         while ((linea = leer.ReadLine()) != null)
         {
             EventoDeportivo e = RestaurarDesdeTexto(linea);
             if (e.Id == id)
-                return e.CupoMaximo;
+            {
+                cupoMaximo = e.CupoMaximo;
+                break;
+            }
         }
-        return 0;
+        
+        return cupoMaximo;
     }
 
     public void Eliminar(int id)
@@ -123,20 +128,20 @@ public class RepositorioEvento : IEventoDeportivoRepositorio
     {
         List<string> nuevasLineas = [];
 
-        using (var reader = new StreamReader(archivoDatos))
+        using (var leer = new StreamReader(archivoDatos))
         {
             string? linea;
-            while ((linea = reader.ReadLine()) != null)
+            while ((linea = leer.ReadLine()) != null)
             {
                 var p = RestaurarDesdeTexto(linea);
                 nuevasLineas.Add(p.Id == evento.Id ? GuardarComoCadena(evento) : linea);
             }
         }
 
-        using var writer = new StreamWriter(archivoDatos, false);
+        using var escribir = new StreamWriter(archivoDatos, false);
         foreach (string l in nuevasLineas)
         {
-            writer.WriteLine(l);
+            escribir.WriteLine(l);
         }
     }
 
@@ -154,5 +159,10 @@ public class RepositorioEvento : IEventoDeportivoRepositorio
             }
         }
         return lista;
+    }
+
+    public bool ExistsByIdResponsable(int idPersona)
+    {
+        throw new NotImplementedException();
     }
 }

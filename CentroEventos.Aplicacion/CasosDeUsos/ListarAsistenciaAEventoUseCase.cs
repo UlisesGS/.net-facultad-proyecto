@@ -1,7 +1,10 @@
 ﻿using System.Data;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Enums;
 using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
 
-namespace CentroEventos.Aplicacion
+namespace CentroEventos.Aplicacion.CasosDeUsos
 {
 
     public class ListarAsistenciaAEventoUseCase(IReservaRepositorio repoReserva, IEventoDeportivoRepositorio repoEvento, IPersonaRepositorio repoPersona){
@@ -12,11 +15,7 @@ namespace CentroEventos.Aplicacion
 
         public List<Persona> Ejecutar(int idEvento){
 
-            var evento = _repositorioEvento.BuscarPorId(idEvento);
-
-            if(evento==null){
-                throw new EntidadNotFoundException("ERROR - El evento no existe.");
-            }
+            var evento = _repositorioEvento.BuscarPorId(idEvento) ?? throw new EntidadNotFoundException("ERROR - El evento no existe.");;
                 
             if(!(evento.FechaHoraInicio.AddHours(evento.DuracionHoras) <= DateTime.Now)){
                 throw new ValidacionException("ERROR - El evento debe haber terminado para realizar esta operacion."); 
@@ -28,7 +27,7 @@ namespace CentroEventos.Aplicacion
                 throw new ValidacionException("ERROR - No hay reservas para este evento.");
             }
 
-            List<Persona> listaFinal = new();
+            List<Persona> listaFinal = [];
         
             foreach(Reserva reserva in listaReserva){
                 if(reserva.EstadoAsistencia==EnumEstadoAsistencia.presente){

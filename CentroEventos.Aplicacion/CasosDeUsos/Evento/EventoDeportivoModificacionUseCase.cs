@@ -1,11 +1,14 @@
-﻿using CentroEventos.Aplicacion.Excepciones;
+﻿using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Enums;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.validadores;
 
-namespace CentroEventos.Aplicacion
+namespace CentroEventos.Aplicacion.CasosDeUsos.Evento
 {
-    public class EventoDeportivoModificacionUseCase(IEventoDeportivoRepositorio repoEvento, IServicioAutorizacion servicioAutorizacion,EventoDeportivoValidador validador){
+    public class EventoDeportivoModificacionUseCase(IEventoDeportivoRepositorio repoEvento, IServicioAutorizacion servicioAutorizacion){
             private readonly IEventoDeportivoRepositorio _repositorioEvento = repoEvento;
             private readonly IServicioAutorizacion _servicioAutorizacion = servicioAutorizacion;
-            private readonly EventoDeportivoValidador _validadorEvento =  validador;
 
             public void Ejecutar(EventoDeportivo evento, int idUsuario){
 
