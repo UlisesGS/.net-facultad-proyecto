@@ -12,6 +12,12 @@ namespace CentroEventos.Aplicacion.Entidades
 
         public DateTime FechaAltaReserva { get; set; } = fechaAltaReserva;
 
-        public EnumEstadoAsistencia EstadoAsistencia { get; set;} = estadoAsistencia;
+        public EnumEstadoAsistencia EstadoAsistencia { get; set; } = estadoAsistencia;
+        
+        public override string ToString()
+        {
+            return $"ID: {Id,-4} | Persona ID: {PersonaId,-5} | Evento ID: {EventoDeportivoId,-5} | Fecha Alta: {FechaAltaReserva:yyyy-MM-dd} | Estado: {EstadoAsistencia,-9}";
+        }
+
     }
 }

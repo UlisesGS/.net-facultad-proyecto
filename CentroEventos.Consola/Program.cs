@@ -1,7 +1,9 @@
 ﻿using CentroEventos.Aplicacion.CasosDeUsos;
 using CentroEventos.Aplicacion.CasosDeUsos.Evento;
 using CentroEventos.Aplicacion.CasosDeUsos.Personas;
+using CentroEventos.Aplicacion.CasosDeUsos.Reservas;
 using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Enums;
 using CentroEventos.Aplicacion.Interfaces;
 using CentroEventos.Aplicacion.Servicios;
 using CentroEventos.Aplicacion.validadores;
@@ -40,7 +42,7 @@ while (true)
             MenuEventos(eventoRepositorio, personaRepositorio, reservaRepositorio, eventoVal, servicioAuth, idUsuario);
             break;
         case "3":
-            MenuReservas(reservaRepositorio, personaRepositorio, eventoRepositorio, reservaVal, servicioAuth, idUsuario);
+            MenuReservas(reservaRepositorio, eventoRepositorio, personaRepositorio, reservaVal, servicioAuth, idUsuario);
             break;
         case "0":
             return;
@@ -120,12 +122,13 @@ void MenuPersonas(RepositorioPersona repositorio, PersonaValidador validador, IS
                 case "3":
                     Console.WriteLine("Listado de Personas:");
                     foreach (Persona per in new PersonaListarUseCase(repositorio).Ejecutar())
-                        Console.WriteLine(per);
+                        Console.WriteLine(per.ToString());
                     Continuar();
                     break;
 
                 case "4":
-                    Console.Write("ID a eliminar: "); int id1 = int.Parse(Console.ReadLine()!);
+                    Console.Write("ID a eliminar: ");
+                    int id1 = int.Parse(Console.ReadLine()!);
                     try
                     {
                         new PersonaBajaUseCase(repositorio, servicioAuth, new RepositorioEvento(), new RepositorioReserva())
@@ -156,7 +159,7 @@ void MenuEventos(IEventoDeportivoRepositorio eventoRepositorio, IPersonaReposito
 {
     while (true)
     {
-            while (true)
+        while (true)
         {
             Console.WriteLine("*** EVENTOS ***");
             Console.WriteLine("1. Alta");
@@ -225,7 +228,7 @@ void MenuEventos(IEventoDeportivoRepositorio eventoRepositorio, IPersonaReposito
                 case "3":
                     Console.WriteLine("Listado de Eventos:");
                     foreach (EventoDeportivo evento in new EventoDeportivoListarUseCase(eventoRepositorio).Ejecutar())
-                        Console.WriteLine(evento);
+                        Console.WriteLine(evento.ToString());
                     Continuar();
                     break;
 
@@ -234,7 +237,7 @@ void MenuEventos(IEventoDeportivoRepositorio eventoRepositorio, IPersonaReposito
                     int id1 = int.Parse(Console.ReadLine()!);
                     try
                     {
-                        new EventoDeportivoBajaUseCase(eventoRepositorio, servicioAuth,new RepositorioReserva()).Ejecutar(id1, id);
+                        new EventoDeportivoBajaUseCase(eventoRepositorio, servicioAuth, new RepositorioReserva()).Ejecutar(id1, id);
                         Console.WriteLine("Eliminado Correctamente.");
                     }
                     catch (Exception ex)
@@ -249,7 +252,7 @@ void MenuEventos(IEventoDeportivoRepositorio eventoRepositorio, IPersonaReposito
                     try
                     {
                         foreach (EventoDeportivo evento in new ListarEventosConCupoDisponibleUseCase(reservaRepositorio, eventoRepositorio).Ejecutar())
-                            Console.WriteLine(evento);
+                            Console.WriteLine(evento.ToString());
                     }
                     catch (Exception ex)
                     {
@@ -257,7 +260,7 @@ void MenuEventos(IEventoDeportivoRepositorio eventoRepositorio, IPersonaReposito
                     }
                     Continuar();
                     break;
-                
+
                 case "6":
                     Console.Write("ID de evento a buscar: ");
                     int id2 = int.Parse(Console.ReadLine()!);
@@ -265,23 +268,116 @@ void MenuEventos(IEventoDeportivoRepositorio eventoRepositorio, IPersonaReposito
                     try
                     {
                         foreach (Persona persona in new ListarAsistenciaAEventoUseCase(reservaRepositorio, eventoRepositorio, personaRepositorio).Ejecutar(id2))
-                            Console.WriteLine(persona);
+                            Console.WriteLine(persona.ToString());
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine($"{ex.Message}");
-                    }   
+                    }
 
                     Continuar();
                     break;
 
                 case "0":
-                        return;
-                    default:
-                        Console.WriteLine("Invalido");
-                        Continuar();
-                        break;
+                    return;
+                default:
+                    Console.WriteLine("Invalido");
+                    Continuar();
+                    break;
+            }
+        }
+    }
+}
+void MenuReservas(IReservaRepositorio reservaRepositorio, IEventoDeportivoRepositorio eventoRepositorio, IPersonaRepositorio personaRepositorio, ReservaValidador validador, IServicioAutorizacion auth, int id)
+{
+    while (true)
+    {
+        while (true)
+        {
+            Console.WriteLine("*** RESERVAS ***");
+            Console.WriteLine("1. Alta");
+            Console.WriteLine("2. Modificar");
+            Console.WriteLine("3. Listar");
+            Console.WriteLine("4. Eliminar");
+            Console.WriteLine("0. Volver");
+            Console.Write("Opcion: ");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Console.Write("Id de Persona: ");
+                    int iP = int.Parse(Console.ReadLine()!);
+                    Console.Write("Id del evento : ");
+                    int iE = int.Parse(Console.ReadLine()!);
+                    Console.Write("Fecha Alta Reserva: ");
+                    DateTime f = DateTime.Parse(Console.ReadLine()!);
+                    Console.Write("Estado de asistencia: ");
+                    EnumEstadoAsistencia e = EnumEstadoAsistencia.pendiente;
+                    Reserva r = new(0, iP, iE, f, e);
+                    try
+                    {
+                        new ReservaAltaUseCase(reservaRepositorio, servicioAuth, validador).Ejecutar(r, id);
+                        Console.WriteLine($"Creado Correctamente: {r}");
                     }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"{ex.Message}");
+                    }
+                    Continuar();
+                    break;
+
+                case "2":
+                    Console.Write("Ingrese el id a modificar");
+                    int idReserva = int.Parse(Console.ReadLine()!);
+                    Reserva r1 = null!; 
+                    Console.Write("Id Persona: ");
+                    r1.PersonaId = int.Parse(Console.ReadLine()!);
+                    Console.Write("IdEventoDeportivo: ");
+                    r1.EventoDeportivoId = int.Parse(Console.ReadLine()!);
+                    Console.Write("Fecha de alta (formato yyyy-MM-dd): ");
+                    r1.FechaAltaReserva = DateTime.Parse(Console.ReadLine()!);
+                    Console.Write("Estado de asistencia (Pendiente, Ausente, Presente): ");
+                    r1.EstadoAsistencia = Enum.Parse<EnumEstadoAsistencia>(Console.ReadLine()!, ignoreCase: true);
+                    try
+                    {
+                        new ReservaModificacionUseCase(reservaRepositorio, servicioAuth, personaRepositorio, eventoRepositorio).Ejecutar(r1, id);
+                        Console.WriteLine($"Creado Correctamente: {r1}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"{ex.Message}");
+                    }
+                    Continuar();
+                    break;
+
+                case "3":
+                    Console.WriteLine("Listado de Reservas:");
+                    foreach (Reserva res in new ReservaListarUseCase(reservaRepositorio).Ejecutar())
+                        Console.WriteLine(res.ToString());
+                    Continuar();
+                    break;
+
+                case "4":
+                    Console.Write("ID a eliminar: ");
+                    int id1 = int.Parse(Console.ReadLine()!);
+                    try
+                    {
+                        new ReservaBajaUseCase(reservaRepositorio, servicioAuth).Ejecutar(id1, id);
+                        Console.WriteLine("Eliminado Correctamente.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"{ex.Message}");
+                    }
+                    Continuar();
+                    break;
+
+                case "0":
+                    return;
+                default:
+                    Console.WriteLine("Invalido");
+                    Continuar();
+                    break;
+            }
         }
     }
 }

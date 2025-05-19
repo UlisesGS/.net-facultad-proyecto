@@ -12,7 +12,7 @@ namespace CentroEventos.Aplicacion.Entidades
 
         public override string ToString()
         {
-            return $"{Nombre} {Apellido} ({DNI})";
+            return $"ID: {Id,-4} | DNI: {(DNI.HasValue ? DNI.Value.ToString() : "N/A"),-10} | Nombre: {Nombre,-15} | Apellido: {Apellido,-15} | Email: {Email,-25} | Teléfono: {Telefono}";
         }
     }
 }
