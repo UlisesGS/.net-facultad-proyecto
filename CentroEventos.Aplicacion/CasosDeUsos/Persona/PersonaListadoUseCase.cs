@@ -3,7 +3,7 @@
     public class PersonaListarUseCase (IPersonaRepositorio repoPersona){
             private readonly IPersonaRepositorio _repositorioPersona = repoPersona;
 
-        public List<Persona> Ejecutar(Persona persona){
+        public List<Persona> Ejecutar(){
 
             return _repositorioPersona.Listar();
         

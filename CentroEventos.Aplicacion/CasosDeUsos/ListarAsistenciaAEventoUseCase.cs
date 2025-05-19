@@ -32,7 +32,7 @@ namespace CentroEventos.Aplicacion
         
             foreach(Reserva reserva in listaReserva){
                 if(reserva.EstadoAsistencia==EnumEstadoAsistencia.presente){
-                    Persona persona = _repositorioPersona.BuscarPorId(reserva.PersonaId);
+                    Persona persona = _repositorioPersona.BuscarPorId(reserva.PersonaId) ?? throw new EntidadNotFoundException("ERROR - La persona no existe.");;
                     listaFinal.Add(persona);
                 }
             }

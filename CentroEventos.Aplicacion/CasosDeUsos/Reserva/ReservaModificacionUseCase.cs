@@ -12,17 +12,16 @@ namespace CentroEventos.Aplicacion
 
         public void Ejecutar(Reserva reserva, int idUsuario){
 
-            var personaAux = _repositorioPersona.BuscarPorId(reserva.PersonaId);
-
-
             if(!_servicioAutorizacion.PoseeElPermiso(idUsuario, EnumPermiso.ReservaModificacion)){
                 throw new FalloAutorizacionException("ERROR - No estas autorizado.");
             }
 
+            var personaAux = _repositorioPersona.BuscarPorId(reserva.PersonaId) ?? throw new EntidadNotFoundException("ERROR - La persona no existe.");;
+
             if(!_repositorioPersona.ExistsById(reserva.PersonaId)){
                 throw new EntidadNotFoundException("ERROR - La Persona no es valida.");
             }
-
+            //POSIBLE PROBLEMA DE QUE NUNCA SE VA A PODER MODIFICAR
             if(_repositorioReserva.ExistsByIdPersona(reserva.PersonaId) && reserva.PersonaId != personaAux.Id){
                 throw new DuplicadoException("ERROR - La Persona ya esta registrada.");
             }

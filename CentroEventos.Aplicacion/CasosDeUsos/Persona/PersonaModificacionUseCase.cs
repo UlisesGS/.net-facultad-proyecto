@@ -9,13 +9,15 @@ namespace CentroEventos.Aplicacion
 
         public void Ejecutar(Persona persona, int idUsuario){
 
-            var personaAux = _repositorioPersona.BuscarPorId(persona.Id);
-
             if(!_servicioAutorizacion.PoseeElPermiso(idUsuario, EnumPermiso.UsuarioModificacion)){
                 throw new FalloAutorizacionException("ERROR - No estas autorizado.");
             }
+            
+            var personaAux = _repositorioPersona.BuscarPorId(persona.Id) ?? throw new EntidadNotFoundException("ERROR - La persona no existe.");
+
             //NO PUEDO REPETIR EL VALIDADOR PORQUE PUEDE SER QUE EL EMAIL Y EL DNI SEAN LOS MISMOS
-            if(string.IsNullOrWhiteSpace(persona.Nombre)){
+            if (string.IsNullOrWhiteSpace(persona.Nombre))
+            {
                 throw new ValidacionException("ERROR - Nombre obligatorio.");
             }
 

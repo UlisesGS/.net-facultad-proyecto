@@ -2,7 +2,7 @@
 {
     public interface IPersonaRepositorio
     {
-        public Boolean ExistsById(int idPersona);
+        public Boolean ExistsById(int id);
 
         public Boolean ExistsByDNI(int dni); // POR AHORA LO DEJAMOS CON ID DE PERSONA PARA BUSCAR
 
@@ -16,6 +16,6 @@
 
         public void Modificar(Persona persona);
 
-        public Persona BuscarPorId(int id);
+        public Persona? BuscarPorId(int id);
     }
 }

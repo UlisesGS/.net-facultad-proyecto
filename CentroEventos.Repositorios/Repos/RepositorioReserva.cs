@@ -6,16 +6,16 @@ namespace CentroEventos.Repositorios
 {
     public class RepositorioReserva : IReservaRepositorio
     {
-        private readonly string? archivoDatos;
-        private readonly string? archivoUltimoId;
+        private readonly string archivoDatos = Env.GetString("ARCHIVO_DATOS_RESERVA");
+        private readonly string archivoUltimoId = Env.GetString("ARCHIVO_ULTIMO_ID_RESERVA");
 
         public int AsignarId()
         {
             int idAux;
-            using var leer = new StreamReader(archivoUltimoId!);
+            using var leer = new StreamReader(archivoUltimoId);
             idAux = int.Parse(leer.ReadToEnd());
             int id = idAux + 1;
-            using var writer = new StreamWriter(archivoUltimoId!, false);
+            using var writer = new StreamWriter(archivoUltimoId, false);
             writer.Write(id);
             return id;
         }
@@ -46,7 +46,7 @@ namespace CentroEventos.Repositorios
 
         public void Eliminar(int id)
         {
-            List<string> newData = new List<string>();
+            List<string> newData = [];
             using var leer = new StreamReader(archivoDatos!);
             string? linea;
             while ((linea = leer.ReadLine()) != null)
@@ -77,37 +77,109 @@ namespace CentroEventos.Repositorios
 
         public bool ExistsByIdEvento(int idEvento)
         {
-            throw new NotImplementedException();
+            using var leer = new StreamReader(archivoDatos!);
+            string? linea;
+            while ((linea = leer.ReadLine()) != null)
+            {
+                Reserva r = RestaurarDesdeTexto(linea);
+                if (r.EventoDeportivoId == idEvento)
+                    return true;
+            }
+            return false;
         }
 
         public bool ExistsByIdPersona(int idPersona)
         {
-            throw new NotImplementedException();
+            using var leer = new StreamReader(archivoDatos!);
+            string? linea;
+            while ((linea = leer.ReadLine()) != null)
+            {
+                Reserva r = RestaurarDesdeTexto(linea);
+                if (r.PersonaId == idPersona)
+                    return true;
+            }
+            return false;
         }
 
         public bool ExistsDuplicatePersona(int idPersona, int idEventoDeportivo)
         {
-            throw new NotImplementedException();
+            using var leer = new StreamReader(archivoDatos!);
+            string? linea;
+            while ((linea = leer.ReadLine()) != null)
+            {
+                Reserva r = RestaurarDesdeTexto(linea);
+                if (r.EventoDeportivoId == idEventoDeportivo && r.PersonaId == idPersona)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public List<Reserva> Listar()
         {
-            throw new NotImplementedException();
+            List<Reserva> listaReserva = [];
+
+            using var leer = new StreamReader(archivoDatos);
+            string? linea;
+            while ((linea = leer.ReadLine()) != null)
+            {
+                Reserva r = RestaurarDesdeTexto(linea);
+                listaReserva.Add(r);
+            }
+
+            return listaReserva;
         }
 
         public List<Reserva> ListarPorEvento(int idEvento)
         {
-            throw new NotImplementedException();
+            List<Reserva> listaReserva = [];
+            using var leer = new StreamReader(archivoDatos!);
+            string? linea;
+            while ((linea = leer.ReadLine()) != null)
+            {
+                Reserva r = RestaurarDesdeTexto(linea);
+                if (r.EventoDeportivoId == idEvento)
+                {
+                    listaReserva.Add(r);
+                }
+            }
+            return listaReserva;
         }
 
         public void Modificar(Reserva reserva)
         {
-            throw new NotImplementedException();
+            List<string> nuevasLineas = [];
+
+            using (var leer = new StreamReader(archivoDatos))
+            {
+                string? linea;
+                while ((linea = leer.ReadLine()) != null)
+                {
+                    var p = RestaurarDesdeTexto(linea);
+                    nuevasLineas.Add(p.Id == reserva.Id ? GuardarComoCadena(reserva) : linea);
+                }
+            }
+
+            using var escribir = new StreamWriter(archivoDatos, false);
+            foreach (string l in nuevasLineas)
+            {
+                escribir.WriteLine(l);
+            }
         }
 
         public int QuantityCupo(int idEventoDeportivo)
         {
-            throw new NotImplementedException();
+            using var leer = new StreamReader(archivoDatos);
+            string? linea;
+            int contador = 0;
+            while ((linea = leer.ReadLine()) != null)
+            {
+                Reserva r = RestaurarDesdeTexto(linea);
+                if (r.EventoDeportivoId == idEventoDeportivo)
+                    contador++;
+            }
+            return contador;
         }
     }
 }

@@ -2,14 +2,14 @@
 
 namespace CentroEventos.Aplicacion
 {
-    public abstract class Persona
+    public class Persona(int id, int dni, string nombre, string apellido, string email, string telefono)
     {
-        public int Id { get; set;}
-        public int? DNI { get; set;}
-        public string Nombre { get; set;} = null!;//Si, esto esta null ahora, pero  va a tener un valor antes de usarse
-        public string Apellido { get; set;} = null!;
-        public string Email { get; set;} = null!;
-        public string Telefono { get; set;} = null!;
+        public int Id { get; set; } = id;
+        public int? DNI { get; set; } = dni;
+        public string Nombre { get; set;} = nombre;
+        public string Apellido { get; set;} = apellido;
+        public string Email { get; set;} = email!;
+        public string Telefono { get; set;} = telefono;
 
         public override string ToString()
         {
