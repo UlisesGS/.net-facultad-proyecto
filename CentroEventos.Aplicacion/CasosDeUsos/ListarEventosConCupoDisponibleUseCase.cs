@@ -11,7 +11,7 @@ namespace CentroEventos.Aplicacion{
         public List<EventoDeportivo> Ejecutar(){
 
             List<EventoDeportivo> listaEventoDeportivo = _repositorioEvento.ListarFechaFutura();
-            List<EventoDeportivo> listaFinal = new();
+            List<EventoDeportivo> listaFinal = [];
 
             if(!listaEventoDeportivo.Any()){
                 throw new ValidacionException("ERROR - No hay eventos disponibles.");

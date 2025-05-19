@@ -8,14 +8,15 @@ namespace CentroEventos.Aplicacion
             private readonly EventoDeportivoValidador _validadorEvento =  validador;
 
             public void Ejecutar(EventoDeportivo evento, int idUsuario){
-                
-                var eventoAux = _repositorioEvento.BuscarPorId(evento.Id);
 
                 if(!_servicioAutorizacion.PoseeElPermiso(idUsuario, EnumPermiso.EventoModificacion)){
                     throw new FalloAutorizacionException("ERROR - No estas autorizado.");
                 }
+                
+                var eventoAux = _repositorioEvento.BuscarPorId(evento.Id) ?? throw new EntidadNotFoundException("ERROR - El evento no existe.");
             
-                if(eventoAux.FechaHoraInicio < DateTime.Now){
+                if (eventoAux.FechaHoraInicio < DateTime.Now)
+                {
                     throw new OperacionInvalidaException("ERROR - La fecha expiro.");
                 }
 
