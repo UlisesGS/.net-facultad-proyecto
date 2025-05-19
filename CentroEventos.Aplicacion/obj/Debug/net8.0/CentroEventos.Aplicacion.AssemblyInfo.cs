@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CentroEventos.Aplicacion")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94833aee82ebb413973a0737a2eaa93466339f0b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4dc5f6e5c73db16e59fe90387f4cf3f6d7d4e34")]
 [assembly: System.Reflection.AssemblyProductAttribute("CentroEventos.Aplicacion")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CentroEventos.Aplicacion")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

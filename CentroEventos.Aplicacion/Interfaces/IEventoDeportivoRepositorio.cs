@@ -2,19 +2,19 @@
 {
     public interface IEventoDeportivoRepositorio
     {
-        public Boolean ExistsById(int idEventoDeportivo);
+        public Boolean ExistsById(int id);
 
-        public Boolean ExistsByIdResponsable(int idPersona);
-
-        public int CupoMaximo(int idEventoDeportivo);
+        public int CupoMaximo(int id);
 
         public void Agregar(EventoDeportivo evento);
 
-        public void Eliminar(int idEvento);
+        public void Eliminar(int id);
 
         public List<EventoDeportivo> Listar();
 
-        public EventoDeportivo BuscarPorId(int id);
+        public void Modificar(EventoDeportivo evento);
+
+        public EventoDeportivo? BuscarPorId(int id);
 
         public List<EventoDeportivo> ListarFechaFutura();
     }
